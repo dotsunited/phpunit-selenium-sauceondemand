@@ -8,7 +8,7 @@
                       http://pear.php.net/dtd/package-2.0
                       http://pear.php.net/dtd/package-2.0.xsd">
  <name>PHPUnit_Selenium_SauceOnDemand</name>
- <channel>pear.php.net</channel>
+ <channel>pear.dotsunited.de</channel>
  <summary>Extension of PHPUnit_Selenium providing Sauce OnDemand integration for PHPUnit</summary>
  <description>Extension of PHPUnit_Selenium providing Sauce OnDemand integration for PHPUnit</description>
  <lead>
