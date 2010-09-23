@@ -39,7 +39,7 @@
  * @copyright  2002-2010 Sebastian Bergmann <sb@sebastian-bergmann.de>
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @link       http://www.phpunit.de/
- * @since      File available since Release 3.3.0
+ * @since      File available since Release 3.5.0
  */
 
 require_once 'PHPUnit/Extensions/SeleniumTestCase/Driver.php';
@@ -58,55 +58,58 @@ require_once 'PHPUnit/Extensions/SeleniumTestCase/Driver.php';
 class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends PHPUnit_Extensions_SeleniumTestCase_Driver
 {
     /**
-     * @var    string
+     * @var string
      */
     protected $username;
 
     /**
-     * @var    string
+     * @var string
      */
     protected $accessKey;
 
     /**
-     * @var    string
+     * @var string
      */
     protected $os;
 
     /**
-     * @var    string
+     * @var string
      */
     protected $browserVersion;
 
     /**
-     * @var    string
+     * @var string
      */
     protected $jobName;
 
     /**
-     * @var    boolean
+     * @var boolean
      */
     protected $recordVideo;
 
     /**
-     * @var    string|array
+     * @var string|array
      */
     protected $userExtensionsUrl;
 
     /**
-     * @var    string
+     * @var string
      */
     protected $firefoxProfileUrl;
 
     /**
-     * @var    integer
+     * @var integer
      */
     protected $maxDuration;
 
     /**
-     * @var    integer
+     * @var integer
      */
     protected $idleTimeout;
 
+    /**
+     * @throws RuntimeException
+     */
     public function __construct()
     {
         if (!extension_loaded('json')) {
