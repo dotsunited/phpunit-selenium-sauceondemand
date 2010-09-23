@@ -31,7 +31,7 @@ Additional setters are:
                 'browser'        => 'firefox',
                 'browserVersion' => '3.6.'
             ),
-            /*array(
+            array(
                 'name'           => 'Google Chrome on Windows',
                 'username'       => 'your-saucelabs-username',
                 'accessKey'      => 'your-saucelabs-access-key',
@@ -46,7 +46,7 @@ Additional setters are:
                 'os'             => 'Windows 2003',
                 'browser'        => 'iexplore',
                 'browserVersion' => '8.'
-            ),*/
+            )
         );
     }
 
