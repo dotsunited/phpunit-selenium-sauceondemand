@@ -52,14 +52,9 @@ Additional setters are:
 
 ## Installation ##
 
-The preferred installation method is via PEAR. At present no PEAR channel has been provided but this does not prevent a simple install! The simplest method of installation is:
+You can install PHPUnit_Selenium_SauceOnDemand via the [Dots United PEAR channel](http://pear.dotsunited.de). Run this from your command line:
 
-    git clone git://github.com/dotsunited/phpunit-selenium-sauceondemand.git phpunit-selenium-sauceondemand
-    cd phpunit-selenium-sauceondemand
-    sudo pear install package.xml
+    pear channel-discover pear.dotsunited.de
+    pear install dotsunited/PHPUnit_Selenium_SauceOnDemand
 
 The above process will install PHPUnit_Selenium_SauceOnDemand as a PEAR library.
-
-Note: If installing from a git clone, you may need to delete any previous PHPUnit_Selenium_SauceOnDemand install via PEAR using:
-
-    sudo pear uninstall PHPUnit_Selenium_SauceOnDemand
