@@ -185,14 +185,64 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
             $driver->setJobName($browser['jobName']);
         }
 
+        if (isset($browser['public'])) {
+            if (!is_bool($browser['public'])) {
+                throw new InvalidArgumentException(
+                  'Array element "public" is no boolean.'
+                );
+            }
+
+            $driver->setPublic($browser['public']);
+        }
+
+        if (isset($browser['tags'])) {
+            if (!is_array($browser['tags'])) {
+                throw new InvalidArgumentException(
+                  'Array element "tags" is no array.'
+                );
+            }
+
+            $driver->setTags($browser['tags']);
+        }
+
+        if (isset($browser['passed'])) {
+            if (!is_bool($browser['passed'])) {
+                throw new InvalidArgumentException(
+                  'Array element "passed" is no boolean.'
+                );
+            }
+
+            $driver->setPassed($browser['passed']);
+        }
+
         if (isset($browser['recordVideo'])) {
-            if (!is_boolean($browser['recordVideo'])) {
+            if (!is_bool($browser['recordVideo'])) {
                 throw new InvalidArgumentException(
                   'Array element "recordVideo" is no boolean.'
                 );
             }
 
             $driver->setRecordVideo($browser['recordVideo']);
+        }
+
+        if (isset($browser['recordScreenshots'])) {
+            if (!is_bool($browser['recordScreenshots'])) {
+                throw new InvalidArgumentException(
+                  'Array element "recordScreenshots" is no boolean.'
+                );
+            }
+
+            $driver->setRecordScreenshots($browser['recordScreenshots']);
+        }
+
+        if (isset($browser['sauceAdvisor'])) {
+            if (!is_bool($browser['sauceAdvisor'])) {
+                throw new InvalidArgumentException(
+                  'Array element "sauceAdvisor" is no boolean.'
+                );
+            }
+
+            $driver->setSauceAdvisor($browser['sauceAdvisor']);
         }
 
         if (isset($browser['userExtensionsUrl'])) {
@@ -233,6 +283,26 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
             }
 
             $driver->setIdleTimeout($browser['idleTimeout']);
+        }
+
+        if (isset($browser['build'])) {
+            if (!is_int($browser['build'])) {
+                throw new InvalidArgumentException(
+                  'Array element "build" is no integer.'
+                );
+            }
+
+            $driver->setBuild($browser['build']);
+        }
+
+        if (isset($browser['customData'])) {
+            if (!is_array($browser['customData']) && !is_object($browser['customData'])) {
+                throw new InvalidArgumentException(
+                  'Array element "customData" is no array/object.'
+                );
+            }
+
+            $driver->setCustomData($browser['customData']);
         }
 
         $this->drivers[] = $driver;

@@ -12,11 +12,18 @@ Additional setters are:
     public function setOs($os);
     public function setBrowserVersion($browserVersion);
     public function setJobName($jobName);
+    public function setPublic($public);
+    public function setTags($tags);
+    public function setPassed($passed);
     public function setRecordVideo($recordVideo);
+    public function setRecordScreenshots($recordScreenshots);
+    public function setSauceAdvisor($sauceAdvisor);
     public function setUserExtensionsUrl($userExtensionsUrl);
     public function setFirefoxProfileUrl($firefoxProfileUrl);
     public function setMaxDuration($maxDuration);
     public function setIdleTimeout($idleTimeout);
+    public function setBuild($build);
+    public function setCustomData($customData);
 
 [Multiple browser configurations](http://www.phpunit.de/manual/3.5/en/selenium.html#selenium.seleniumtestcase.examples.WebTest3.php) are also possible:
 

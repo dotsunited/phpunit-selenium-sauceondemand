@@ -85,7 +85,32 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
     /**
      * @var boolean
      */
+    protected $public;
+
+    /**
+     * @var array
+     */
+    protected $tags;
+
+    /**
+     * @var boolean
+     */
+    protected $passed;
+
+    /**
+     * @var boolean
+     */
     protected $recordVideo;
+
+    /**
+     * @var boolean
+     */
+    protected $recordScreenshots;
+
+    /**
+     * @var boolean
+     */
+    protected $sauceAdvisor;
 
     /**
      * @var string|array
@@ -106,6 +131,16 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
      * @var integer
      */
     protected $idleTimeout;
+
+    /**
+     * @var integer
+     */
+    protected $build;
+
+    /**
+     * @var object
+     */
+    protected $customData;
 
     /**
      * @throws RuntimeException
@@ -168,14 +203,38 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
             'browser-version' => $this->browserVersion,
         );
 
-        if ($this->jobName !== NULL) {
-            $data['job-name'] = $this->jobName;
-        } else {
-            $data['job-name'] = $this->testCase->toString();
+        if ($this->jobName !== NULL) { // backwards compatibility
+            $data['name'] = $this->jobName;
+        } elseif ($this->name !== NULL) {
+            $data['name'] = $this->name;
+        }
+
+        if (!isset($data['name']) || $data['name'] === '') {
+            $data['name'] = $this->testCase->toString();
+        }
+
+        if ($this->public !== NULL) {
+            $data['public'] = $this->public;
+        }
+
+        if ($this->tags !== NULL) {
+            $data['tags'] = $this->tags;
+        }
+
+        if ($this->passed !== NULL) {
+            $data['passed'] = $this->passed;
         }
 
         if ($this->recordVideo !== NULL) {
             $data['record-video'] = $this->recordVideo;
+        }
+
+        if ($this->recordScreenshots !== NULL) {
+            $data['record-screenshots'] = $this->recordScreenshots;
+        }
+
+        if ($this->sauceAdvisor !== NULL) {
+            $data['sauce-advisor'] = $this->sauceAdvisor;
         }
 
         if ($this->userExtensionsUrl !== NULL) {
@@ -192,6 +251,14 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
 
         if ($this->idleTimeout !== NULL) {
             $data['idle-timeout'] = $this->idleTimeout;
+        }
+
+        if ($this->build !== NULL) {
+            $data['build'] = $this->build;
+        }
+
+        if ($this->customData !== NULL) {
+            $data['custom-data'] = $this->customData;
         }
 
         if (!isset($this->sessionId)) {
@@ -272,16 +339,81 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
     }
 
     /**
+     * @param  boolean $public
+     * @throws InvalidArgumentException
+     */
+    public function setPublic($public)
+    {
+        if (!is_bool($public)) {
+            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'boolean');
+        }
+
+        $this->public = $public;
+    }
+
+    /**
+     * @param  array $tags
+     * @throws InvalidArgumentException
+     */
+    public function setTags($tags)
+    {
+        if (!is_array($tags)) {
+            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'array');
+        }
+
+        $this->tags = $tags;
+    }
+
+    /**
+     * @param  boolean $passed
+     * @throws InvalidArgumentException
+     */
+    public function setPassed($passed)
+    {
+        if (!is_bool($passed)) {
+            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'boolean');
+        }
+
+        $this->passed = $passed;
+    }
+
+    /**
      * @param  boolean $recordVideo
      * @throws InvalidArgumentException
      */
     public function setRecordVideo($recordVideo)
     {
-        if (!is_string($recordVideo)) {
+        if (!is_bool($recordVideo)) {
             throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'boolean');
         }
 
         $this->recordVideo = $recordVideo;
+    }
+
+    /**
+     * @param  boolean $recordScreenshots
+     * @throws InvalidArgumentException
+     */
+    public function setRecordScreenshots($recordScreenshots)
+    {
+        if (!is_bool($recordScreenshots)) {
+            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'boolean');
+        }
+
+        $this->recordScreenshots = $recordScreenshots;
+    }
+
+    /**
+     * @param  boolean $sauceAdvisor
+     * @throws InvalidArgumentException
+     */
+    public function setSauceAdvisor($sauceAdvisor)
+    {
+        if (!is_bool($sauceAdvisor)) {
+            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'boolean');
+        }
+
+        $this->sauceAdvisor = $sauceAdvisor;
     }
 
     /**
@@ -334,5 +466,35 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
         }
 
         $this->idleTimeout = $idleTimeout;
+    }
+
+    /**
+     * @param  integer $build
+     * @throws InvalidArgumentException
+     */
+    public function setBuild($build)
+    {
+        if (!is_integer($build)) {
+            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'integer');
+        }
+
+        $this->build = $build;
+    }
+
+    /**
+     * @param  object $customData
+     * @throws InvalidArgumentException
+     */
+    public function setCustomData($customData)
+    {
+        if (is_array($customData)) {
+            $customData = (object) $customData;
+        }
+
+        if (!is_object($customData)) {
+            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'object');
+        }
+
+        $this->customData = $customData;
     }
 }
