@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit backupGlobals="false">
+  <php>
+    <const name="PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_SAUCEONDEMAND_USERNAME" value="your-saucelabs-username"/>
+    <const name="PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_SAUCEONDEMAND_ACCESSKEY" value="your-saucelabs-access-key"/>
+  </php>
+
+  <testsuites>
+    <testsuite name="PHPUnit">
+      <directory suffix="Test.php">Tests</directory>
+    </testsuite>
+  </testsuites>
+
+</phpunit>
