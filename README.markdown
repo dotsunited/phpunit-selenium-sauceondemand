@@ -18,6 +18,7 @@ Additional setters are:
     public function setRecordVideo($recordVideo);
     public function setRecordScreenshots($recordScreenshots);
     public function setSauceAdvisor($sauceAdvisor);
+    public function setSingleWindow($singleWindow);
     public function setUserExtensionsUrl($userExtensionsUrl);
     public function setFirefoxProfileUrl($firefoxProfileUrl);
     public function setMaxDuration($maxDuration);
