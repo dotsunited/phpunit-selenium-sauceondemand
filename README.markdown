@@ -3,7 +3,7 @@ PHPUnit_Selenium_SauceOnDemand
 
 [Sauce OnDemand](http://saucelabs.com) integration for [PHPUnit](http://www.phpunit.de).
 
-This package extends the [PHPUnit_Selenium](http://github.com/sebastianbergmann/phpunit-selenium) extension and provides additional setter functions for [Sauce OnDemand specific options](https://saucelabs.com/products/docs/sauce-ondemand).
+This package extends the [PHPUnit_Selenium](https://github.com/sebastianbergmann/phpunit-selenium) extension and provides additional setter functions for [Sauce OnDemand specific options](https://saucelabs.com/products/docs/sauce-ondemand).
 
 Additional setters are:
 

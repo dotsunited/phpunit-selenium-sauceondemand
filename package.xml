@@ -27,7 +27,7 @@
   <api>stable</api>
  </stability>
  <license>BSD License</license>
- <notes>http://github.com/dotsunited/phpunit-selenium-sauceondemand#readme</notes>
+ <notes>https://github.com/dotsunited/phpunit-selenium-sauceondemand#readme</notes>
  <contents>
   <dir name="/">
    <dir name="PHPUnit">
