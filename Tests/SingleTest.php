@@ -70,6 +70,7 @@ class SingleTest extends PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCa
         $this->setRecordVideo(false);
         $this->setRecordScreenshots(false);
         $this->setSauceAdvisor(false);
+        $this->setSingleWindow(true);
         //$this->setUserExtensionsUrl('http://saucelabs.com/ext/flex.js');
         //$this->setFirefoxProfileUrl('http://saucelabs.com/example_files/rce.zip');
         $this->setMaxDuration(300);

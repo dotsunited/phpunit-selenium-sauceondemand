@@ -245,6 +245,16 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
             $driver->setSauceAdvisor($browser['sauceAdvisor']);
         }
 
+        if (isset($browser['singleWindow'])) {
+            if (!is_bool($browser['singleWindow'])) {
+                throw new InvalidArgumentException(
+                  'Array element "singleWindow" is no boolean.'
+                );
+            }
+
+            $driver->setSingleWindow($browser['singleWindow']);
+        }
+
         if (isset($browser['userExtensionsUrl'])) {
             if (!is_string($browser['userExtensionsUrl']) && !is_array($browser['userExtensionsUrl'])) {
                 throw new InvalidArgumentException(

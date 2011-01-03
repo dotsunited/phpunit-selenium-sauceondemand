@@ -113,6 +113,11 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
     protected $sauceAdvisor;
 
     /**
+     * @var boolean
+     */
+    protected $singleWindow;
+
+    /**
      * @var string|array
      */
     protected $userExtensionsUrl;
@@ -235,6 +240,10 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
 
         if ($this->sauceAdvisor !== NULL) {
             $data['sauce-advisor'] = $this->sauceAdvisor;
+        }
+
+        if ($this->singleWindow !== NULL) {
+            $data['single-window'] = $this->singleWindow;
         }
 
         if ($this->userExtensionsUrl !== NULL) {
@@ -414,6 +423,19 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
         }
 
         $this->sauceAdvisor = $sauceAdvisor;
+    }
+
+    /**
+     * @param  boolean $singleWindow
+     * @throws InvalidArgumentException
+     */
+    public function setSingleWindow($singleWindow)
+    {
+        if (!is_bool($singleWindow)) {
+            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'boolean');
+        }
+
+        $this->singleWindow = $singleWindow;
     }
 
     /**

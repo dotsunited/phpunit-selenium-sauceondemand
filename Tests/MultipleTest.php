@@ -71,6 +71,7 @@ class MultipleTest extends PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTest
             'recordVideo'       => false,
             'recordScreenshots' => false,
             'sauceAdvisor'      => false,
+            'singleWindow'      => true,
             //'userExtensionsUrl' => 'http://saucelabs.com/ext/flex.js',
             //'firefoxProfileUrl' => 'http://saucelabs.com/example_files/rce.zip',
             'maxDuration'       => 300,
