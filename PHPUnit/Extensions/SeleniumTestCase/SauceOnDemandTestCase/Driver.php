@@ -283,6 +283,14 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
     }
 
     /**
+     * @return string
+     */
+    public function getSessionId()
+    {
+        return $this->sessionId;
+    }
+
+    /**
      * @param  string $username
      * @throws InvalidArgumentException
      */
@@ -296,6 +304,14 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
     }
 
     /**
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
      * @param  string $accessKey
      * @throws InvalidArgumentException
      */
@@ -306,6 +322,14 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
         }
 
         $this->accessKey = $accessKey;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccessKey()
+    {
+        return $this->accessKey;
     }
 
     /**
@@ -387,6 +411,14 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
     }
 
     /**
+     * @return boolean
+     */
+    public function getPassed()
+    {
+        return $this->passed;
+    }
+
+    /**
      * @param  boolean $recordVideo
      * @throws InvalidArgumentException
      */
@@ -397,6 +429,14 @@ class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase_Driver extends P
         }
 
         $this->recordVideo = $recordVideo;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getRecordVideo()
+    {
+        return $this->recordVideo;
     }
 
     /**

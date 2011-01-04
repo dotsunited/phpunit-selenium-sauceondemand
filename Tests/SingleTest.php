@@ -66,11 +66,10 @@ class SingleTest extends PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCa
         $this->setBrowserVersion('3.6.');
         $this->setPublic(false);
         $this->setTags(array('windows', 'firefox'));
-        $this->setPassed(true);
-        $this->setRecordVideo(false);
-        $this->setRecordScreenshots(false);
-        $this->setSauceAdvisor(false);
-        $this->setSingleWindow(true);
+        //$this->setRecordVideo(false);
+        //$this->setRecordScreenshots(false);
+        //$this->setSauceAdvisor(false);
+        //$this->setSingleWindow(true);
         //$this->setUserExtensionsUrl('http://saucelabs.com/ext/flex.js');
         //$this->setFirefoxProfileUrl('http://saucelabs.com/example_files/rce.zip');
         $this->setMaxDuration(300);
@@ -85,5 +84,14 @@ class SingleTest extends PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCa
     {
         $this->open('/');
         $this->assertTitle('Cross browser testing with Selenium - Sauce Labs');
+    }
+
+    /**
+     * @group fail
+     */
+    public function testFail()
+    {
+        $this->open('/');
+        $this->assertTitle('This should fail');
     }
 }
