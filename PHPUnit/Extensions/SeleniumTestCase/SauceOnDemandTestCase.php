@@ -325,6 +325,23 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
     }
 
     /**
+     * Intercept stop() call.
+     */
+    public function stop()
+    {
+        // Set passed option
+        if ($this->hasFailed()) {
+            $bool = 'false';
+        } else {
+            $bool = 'true';
+        }
+
+        $this->setContext('sauce:job-info={"passed": ' . $bool . '}');
+
+        return $this->__call('stop', array());
+    }
+
+    /**
      * This method is called when a test method did not execute successfully.
      *
      * @param Exception $e
@@ -361,9 +378,6 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
                 );
                 $buffer .= 'Video URL: ' . $videoUrl . "\n";
             }
-
-            // Mark test as failed
-            $this->setContext("sauce:job-info={\"passed\": false}");
         }
 
         try {
