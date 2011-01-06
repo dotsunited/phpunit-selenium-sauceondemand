@@ -355,29 +355,12 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
                 $this->drivers[0]->getSessionId()
             );
 
-            $logUrl = sprintf(
-                'https://saucelabs.com/rest/%s/jobs/%s/results/selenium-server.log',
-                $this->drivers[0]->getUsername(),
-                $this->drivers[0]->getSessionId()
-            );
-
             $buffer = 'Current URL: ' . $this->drivers[0]->getLocation() .
                       "\n" .
                       'Job URL: ' . $jobUrl .
-                      "\n" .
-                      'Log URL: ' . $logUrl .
                       "\n";
 
             $message = $e->getCustomMessage();
-
-            if ($this->drivers[0]->getRecordVideo() !== false) {
-                $videoUrl = sprintf(
-                    'https://saucelabs.com/rest/%s/jobs/%s/results/video.flv',
-                    $this->drivers[0]->getUsername(),
-                    $this->drivers[0]->getSessionId()
-                );
-                $buffer .= 'Video URL: ' . $videoUrl . "\n";
-            }
         }
 
         try {
