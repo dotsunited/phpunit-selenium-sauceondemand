@@ -59,6 +59,14 @@ require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends PHPUnit_Extensions_SeleniumTestCase
 {
     /**
+     * Whether to automatically report if a test passed/failed to Sauce OnDemand
+     * 
+     * @see http://saucelabs.com/docs/sauce-ondemand#passed
+     * @var boolean
+     */
+    protected $reportPassFailToSauceOnDemand = true;
+
+    /**
      * @param  array $browser
      * @return PHPUnit_Extensions_SeleniumTestCase_Driver
      * @since  Method available since Release 3.3.0
@@ -325,18 +333,45 @@ abstract class PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCase extends
     }
 
     /**
+     * Sets whether to automatically report if a test passed/failed to Sauce OnDemand.
+     *
+     * @param boolean $flag
+     * @throws InvalidArgumentException
+     */
+    public function setReportPassFailToSauceOnDemand($flag)
+    {
+        if (!is_bool($flag)) {
+            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'boolean');
+        }
+
+        $this->reportPassFailToSauceOnDemand = $flag;
+    }
+
+    /**
+     * Gets whether to automatically report if a test passed/failed to Sauce OnDemand.
+     *
+     * @return boolean
+     */
+    public function getReportPassFailToSauceOnDemand()
+    {
+        return $this->reportPassFailToSauceOnDemand;
+    }
+
+    /**
      * Intercept stop() call.
      */
     public function stop()
     {
-        // Set passed option
-        if ($this->hasFailed()) {
-            $bool = 'false';
-        } else {
-            $bool = 'true';
-        }
+        if ($this->getReportPassFailToSauceOnDemand()) {
+            // Set passed option
+            if ($this->hasFailed()) {
+                $passed = 'false';
+            } else {
+                $passed = 'true';
+            }
 
-        $this->setContext('sauce:job-info={"passed": ' . $bool . '}');
+            $this->setContext('sauce:job-info={"passed": ' . $passed . '}');
+        }
 
         return $this->__call('stop', array());
     }
