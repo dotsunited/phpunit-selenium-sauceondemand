@@ -61,7 +61,7 @@ class SingleTest extends PHPUnit_Extensions_SeleniumTestCase_SauceOnDemandTestCa
     {
         $this->setUsername(PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_SAUCEONDEMAND_USERNAME);
         $this->setAccessKey(PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_SAUCEONDEMAND_ACCESSKEY);
-        $this->setos('Windows 2003');
+        $this->setOs('Windows 2003');
         $this->setBrowser('firefox');
         $this->setBrowserVersion('3.6.');
         $this->setPublic(false);
