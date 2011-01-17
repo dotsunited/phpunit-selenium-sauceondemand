@@ -1,5 +1,12 @@
+This repository is NOT maintained anymore!
+==========================================
+
+PHPUnit_Selenium_SauceOnDemand development has been moved to the official Saucelabs repository: 
+
+<https://github.com/saucelabs/phpunit-selenium-sauceondemand>
+
 PHPUnit_Selenium_SauceOnDemand
-=============================
+==============================
 
 [Sauce OnDemand](http://saucelabs.com) integration for [PHPUnit](http://www.phpunit.de).
 
